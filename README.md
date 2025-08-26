@@ -21,13 +21,13 @@ In this course, we will follow the department's policies (available from; [https
 
 ## Attendance Form
 
-Please complete the __attendance__ [https://forms.gle/K8yZJNJTU8soNQX27](https://forms.gle/K8yZJNJTU8soNQX27) before you leave class or lab sessions.
+Please complete the __attendance__ [form](https://forms.gle/K8yZJNJTU8soNQX27) before you leave class or lab sessions.
 
 Note: recording attendance is part of our departmental [policy](https://www.cis.allegheny.edu/teaching/policies/).
 
 ## Token Form
 
-To request one of your two tokens to provide you with an extension for an assignment, activity or exam, please complete the following [form](https://forms.gle/w5ofsSZq7ruXA3u1A).
+To request one of your two tokens to provide you with an extension for an assignment, activity or exam, please complete the following [form](https://forms.gle/hDnBiDa8R1BcMhT88).
 
 __Note: Please let the instructor know by Discord that you have completed the form as it may go unnoticed otherwise.__
 
