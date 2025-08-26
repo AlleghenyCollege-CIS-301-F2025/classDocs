@@ -228,7 +228,7 @@ git commit -m "informative message"
 git push
 ```
 
-_Please do not email your work to the instructor._
+**Please do not email your work to the instructor.**
 
 ### Course Tokens
 
