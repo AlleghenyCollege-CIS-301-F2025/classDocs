@@ -21,7 +21,7 @@ In this course, we will follow the department's policies (available from; [https
 
 ## Attendance Form
 
-Please complete the __attendance__ [form](https://forms.gle/iaY7zBmxj8KvsDMa8) before you leave class or lab sessions.
+Please complete the __attendance__ [form](https://docs.google.com/forms/d/e/1FAIpQLSci2gS9lEjKmx76HuD1VR3w9gpAlyvqgmODY1j2KcldHOvP0g/viewform?usp=sharing&ouid=103252844525990438220) before you leave class or lab sessions.
 
 Note: recording attendance is part of our departmental [policy](https://www.cis.allegheny.edu/teaching/policies/).
 
