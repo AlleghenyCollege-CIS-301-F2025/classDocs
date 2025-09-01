@@ -362,7 +362,7 @@ Below is a __tentative__ schedule of covered topics and activities.
 | Week Number | Dates | Topic |
 | ----------- | ----- | ----- |
 | 1 | 28 August 2024 | Intro to the course, [Department core values](https://docs.google.com/presentation/d/1ShEG7fO-OI-O06JW6VB8CTnLyDb5I4Tj6WCOAAXkIFU/edit?usp=sharing), syllabus, Ungraded [activity](https://github.com/AlleghenyCollege-CIS-301-F2025/classDocs/blob/main/lessons/01_activity_survey/whatDoYouKnow/README.md), Getting to know you [survey](https://forms.gle/hiRAdejyZwfeoaN3A) |
-| 2 | Monday, 1  | No class |
+| 2 | Monday, 1  | Labor Day, No class |
 | 2 | 3 Sept  | Programming in R, Exploratory Analytics, |
 | 3 | TBA  | Types of Data, Exploratory steps, Transformations,  |
 | 4 | TBA  | First steps, Basics, Describing data,  |
