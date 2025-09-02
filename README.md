@@ -110,6 +110,10 @@ If you are already on the department's Discord server, then you will be given ac
 
 We will be using Discord for class communications. If you do not already have an account on Discord, please create one at [https://discord.com/](https://discord.com/). Once you have an account, please set one up to receive notifications from the channel. We will be using the channel, `data-science`, for all class communications. If you have trouble setting up Discord,or have trouble getting into the course channel, please ask your peers, the Technology Leaders, or your instructor for help.
 
+Class invitation link: [https://discord.gg/PcFGAGNu](https://discord.gg/PcFGAGNu).
+
+*Note, this link will expire on 8th September 2025.*
+
 ## Course Deliverable
 
     • Exam code: "A"
