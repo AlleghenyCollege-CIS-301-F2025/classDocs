@@ -369,7 +369,7 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 2 | 1 Sept  | Labor Day, No class |
 | 2 | 3 Sept  | Programming in R, Exploratory Analytics, [Lab01](https://classroom.github.com/a/9PjfEogN) |
 | 3 | 5 Sept  | Types of Data, Exploratory steps, basic plots  |
-| 4 | TBA  | First steps, Basics, Describing data,  |
+| 4 | TBA  | First steps, Basic transformations, Describing data,  |
 | 5 | TBA  | Statistics, T-tests |
 | 6 | TBA  | |
 | 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
