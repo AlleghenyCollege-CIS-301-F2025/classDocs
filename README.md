@@ -367,16 +367,17 @@ Below is a __tentative__ schedule of covered topics and activities.
 | ----------- | ----- | ----- |
 | 1 | 28 August 2024 | Intro to the course, [Department core values](https://docs.google.com/presentation/d/1ShEG7fO-OI-O06JW6VB8CTnLyDb5I4Tj6WCOAAXkIFU/edit?usp=sharing), syllabus, Ungraded [activity](https://github.com/AlleghenyCollege-CIS-301-F2025/classDocs/blob/main/lessons/01_activity_survey/whatDoYouKnow/README.md), Getting to know you [survey](https://forms.gle/hiRAdejyZwfeoaN3A) |
 | 2 | 1 Sept  | Labor Day, No class |
-| 2 | 3 Sept  | Programming in R, Exploratory Analytics, [Lab01](https://classroom.github.com/a/9PjfEogN) |
+| 2 | 3 Sept  | Programming in R, Exploratory Analytics, GitHub Classroom [Lab01](https://classroom.github.com/a/9PjfEogN) |
 | 3 | 5 Sept  | Types of Data, Exploratory steps, basic plots  |
-| 4 | TBA  | First steps, Basic transformations, Describing data,  |
-| 5 | TBA  | Statistics, T-tests |
-| 6 | TBA  | |
+| 3 | 8 Sept  | First steps, Basic transformations, Describing data,  |
+| 4 | 10 Sept  | Basic Transformations, continued. GitHub Classroom [Lab02](https://classroom.github.com/a/Qer3QUzQ)|
+| 5 |   | TBA |
+| 6 | TBA  | Statistics, T-test |
 | 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
 | 8 | TBA  |  Machine Learning (supervised): Linear Regression models,  |
 | 9 | TBA  |  MultiLinear Regression models, |
 | 10 | TBA |  MultiLinear Regression (multicollinearity, model summaries, etc), |
-| 11 | TBA  |  Discussion of The Vaccine Lab,  Intro to Decision Trees, |
+| 11 | TBA  |  Discussion of The Vaccine Lab,  Intro to Decision Trees |
 | 12 | TBA | Announcement of Final Project|
 | 13 | TBA | Decision Trees and Random Forests (see supplied tutorials for ideas|
 | 13 | TBA | Scikit-Learn tutorials for ideas, |
