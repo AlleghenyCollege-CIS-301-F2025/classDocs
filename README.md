@@ -374,6 +374,7 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 5 |   | TBA |
 | 6 | TBA  | Statistics, T-test |
 | 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
+| 7 | 9th - 12th Oct | **Fall Break, No class** |
 | 8 | TBA  |  Machine Learning (supervised): Linear Regression models,  |
 | 9 | TBA  |  MultiLinear Regression models, |
 | 10 | TBA |  MultiLinear Regression (multicollinearity, model summaries, etc), |
