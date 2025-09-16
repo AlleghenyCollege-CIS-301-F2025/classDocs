@@ -20,10 +20,6 @@ if(!require('plotly')) {
   library('plotly')
 }
 
-# Load ggplot2 for plotting (should be installed with plotly, but ensure loaded)
-# library(ggplot2)
-#library(tidyverse)
-#library(plotly)
 
 p <- ggplot(mpg, aes(x = displ, y = hwy, color = cty, size = cyl)) 
   
