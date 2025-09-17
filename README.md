@@ -250,7 +250,7 @@ For questions regarding the application and usage of tokens, students are encour
 
 GradeBook repository will be used to deliver your grades from your activities and labs to you. In this repository, you will find a file which contains the same information that the instructor has in the gradebook. While it is a repository that you will `pull` from, you will never need to `push` anything to this repository.
 
-Please use the following URL to create your gradebook repository; [https://classroom.github.com/a/txKMvADl](https://classroom.github.com/a/txKMvADl).
+Please use the following URL to create your gradebook repository; [https://classroom.github.com/a/toR1cj0d](https://classroom.github.com/a/toR1cj0d).
 
 ### Bring your own computer to class
 
