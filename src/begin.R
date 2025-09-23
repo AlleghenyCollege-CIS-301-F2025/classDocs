@@ -7,3 +7,9 @@ rm(list = ls()) # clear out the variables from memory to make a clean execution 
 graphics.off() # clear out all plots from previous work.
 
 cat("\014") # clear the console
+
+
+if(!require('tidyverse')) {
+  install.packages('tidyverse')
+  library('tidyverse')
+}
