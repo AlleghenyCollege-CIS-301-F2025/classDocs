@@ -371,8 +371,8 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 3 | 1 Sept  | Types of Data, Exploratory steps, basic plots  |
 | 3 | 8 Sept  | First steps, Basic transformations, Describing data,  |
 | 3 | 10 Sept  | Basic Transformations, continued. GitHub Classroom [Lab02](https://classroom.github.com/a/Qer3QUzQ), Shiny App [Activity02](https://classroom.github.com/a/b5eORzvk), First Steps in Analysis |
-| 4 | 15 Sept  | First Steps in Analysis, [Lab03](https://classroom.github.com/a/gLtbud7o), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)  |
-| 5 |   | TBA |
+| 4 | 15 Sept  | First Steps in Analysis (I), [Lab03](https://classroom.github.com/a/gLtbud7o), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)  |
+| 5 | 22 Sept  | First Steps in Analysis (II), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7), [Lab04](https://classroom.github.com/a/WF7gSgVm)   |
 | 6 | TBA  | Statistics, T-test |
 | 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
 | 7 | 9th - 12th Oct | **Fall Break, No class** |
