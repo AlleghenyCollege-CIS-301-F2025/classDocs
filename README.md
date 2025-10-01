@@ -238,13 +238,17 @@ git push
 
 In our course, students are permitted to utilize two tokens to extend deadlines for assignments and tests (not final projects). The application of a token typically does not require interaction with the course instructor, except in extraordinary circumstances such as those documented as severe and extenuating or those that breach the CIS policy document or any College-approved policy.
 
-The rationale behind the use of tokens is outlined in our departmental [policy](https://www.cis.allegheny.edu/teaching/policies/).
+- The rationale behind the use of tokens is outlined in our departmental [policy](https://www.cis.allegheny.edu/teaching/policies/).
 
-To utilize a token, students must first submit a Google form at least 24 hours prior to the deadline passing. Exceptions can be made for severe or extenuating circumstances, as well as instances that violate the CIS policy document or any College-approved policy.
+- To utilize a token, __students must first submit a Google form at least 24 hours prior to the deadline passing__. Exceptions can be made for severe or extenuating circumstances, as well as instances that violate the CIS policy document or any College-approved policy.
 
-It is important to note that the use of tokens grants an extension of only one week for all coursework, with the exception of the final project, which is fixed by the College.
+- Tokens grant an automatic extension of one week to anything except the project or final exam.
 
-For questions regarding the application and usage of tokens, students are encouraged to check the departmental policy documentation, or reach out to the course instructor for clarification.
+- Tokens will not be accepted after the due date of the last lab. This means that token usage will end after the labs are complete and will no longer be accepted. This roughly implies that they will stop three or four weeks from the end of class.
+
+- It is important to note that the use of tokens grants an extension of only one week for all coursework, with the exception of the final project, which is fixed by the College.
+
+- For questions regarding the application and usage of tokens, students are encouraged to check the departmental policy documentation, or reach out to the course instructor for clarification.
 
 ### Gradebook Repository
 
