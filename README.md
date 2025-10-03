@@ -377,7 +377,7 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 3 | 10 Sept  | Basic Transformations, continued. GitHub Classroom [Lab02](https://classroom.github.com/a/Qer3QUzQ), Shiny App [Activity02](https://classroom.github.com/a/b5eORzvk), First Steps in Analysis |
 | 4 | 15 Sept  | First Steps in Analysis (I), [Lab03](https://classroom.github.com/a/gLtbud7o), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)  |
 | 5 | 22 Sept  | First Steps in Analysis (II), Ron Mattocks talk [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7), [Lab04](https://classroom.github.com/a/WF7gSgVm), [Activity 03](https://classroom.github.com/a/4nU1CeUF)   |
-| 6 | TBA  | Statistics,Correlations, T-tests, Intro to Regression Analysis|
+| 6 | TBA  | Statistics,Correlations, T-tests, Intro to Regression Analysis, [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)|
 | 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
 | 7 | 9th - 12th Oct | **Fall Break, No class** |
 | 8 | TBA  |  Machine Learning (supervised): Linear Regression models,  |
