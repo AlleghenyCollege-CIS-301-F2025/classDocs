@@ -380,8 +380,8 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 6 | TBA  | Statistics,Correlations, T-tests, Intro to Regression Analysis, [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)|
 | 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
 | 7 | 9th - 12th Oct | **Fall Break, No class** |
-| 8 | TBA  |  Machine Learning (supervised): Linear Regression models,  |
-| 9 | TBA  |  MultiLinear Regression models, |
+| 8 | TBA  |  Manova, [Lab 05](https://classroom.github.com/a/jvMyfmNX)  |
+| 9 | TBA  |  Machine Learning (supervised): Linear Regression models |
 | 10 | TBA |  MultiLinear Regression (multicollinearity, model summaries, etc), |
 | 11 | TBA  |  Discussion of The Vaccine Lab,  Intro to Decision Trees |
 | 12 | TBA | Announcement of Final Project|
