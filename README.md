@@ -381,12 +381,12 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 3 | 10 Sept  | Basic Transformations, continued. GitHub Classroom [Lab02](https://classroom.github.com/a/Qer3QUzQ), Shiny App [Activity02](https://classroom.github.com/a/b5eORzvk), First Steps in Analysis |
 | 4 | 15 Sept  | First Steps in Analysis (I), [Lab03](https://classroom.github.com/a/gLtbud7o), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)  |
 | 5 | 22 Sept  | First Steps in Analysis (II), Ron Mattocks talk [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7), [Lab04](https://classroom.github.com/a/WF7gSgVm), [Activity 03](https://classroom.github.com/a/4nU1CeUF)   |
-| 6 | TBA  | Statistics,Correlations, T-tests, Intro to Regression Analysis, [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)|
-| 7 | TBA  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
+| 6 | 29 Sept  | Statistics,Correlations, T-tests, Intro to Regression Analysis, [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)|
+| 7 | 6th Oct  | Modeling formal basics: Analysis of variance (ANOVA), Multivariate analysis of variance (MANOVA),  |
 | 7 | 9th - 12th Oct | **Fall Break, No class** |
-| 8 | 15 Oct-17 Oct  |  Manova, [Lab 05](https://classroom.github.com/a/jvMyfmNX), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)  |
-| 9 | 20 Oct | [Activity 04](https://classroom.github.com/a/Fye2EpXD), Machine Learning (supervised): Linear Regression models, [Midterm](https://classroom.github.com/a/8ZJjQS30) |
-| 10 | TBA |  MultiLinear Regression (multicollinearity, model summaries, etc), |
+| 8 | 15th Oct-17 Oct  |  Manova, [Lab 05](https://classroom.github.com/a/jvMyfmNX), [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7)  |
+| 9 | 20th Oct | [Activity 04](https://classroom.github.com/a/Fye2EpXD), Machine Learning (supervised): Linear Regression models, [Midterm](https://classroom.github.com/a/8ZJjQS30) |
+| 10 | 31 Oct |  MultiLinear Regression (multicollinearity, model summaries, etc), |
 | 11 | TBA  |  Discussion of The Vaccine Lab,  Intro to Decision Trees |
 | 12 | TBA | Announcement of Final Project|
 | 13 | TBA | Decision Trees and Random Forests (see supplied tutorials for ideas|
