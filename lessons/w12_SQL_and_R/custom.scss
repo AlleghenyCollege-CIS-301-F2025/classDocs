@@ -1,0 +1,65 @@
+/*-- scss:defaults --*/
+
+// Color palette
+$primary-color: #2E86AB;
+$secondary-color: #A23B72;
+$accent-color: #F18F01;
+$success-color: #C73E1D;
+$info-color: #4ECDC4;
+$warning-color: #FFE66D;
+
+// Typography
+$font-family-sans-serif: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+// Theme colors
+$theme: "white";
+$code-block-bg: #f8f9fa;
+
+/*-- scss:rules --*/
+
+// Override reveal.js defaults
+.reveal {
+  .slides section {
+    text-align: left;
+  }
+  
+  .slide-logo {
+    max-height: 80px;
+    max-width: 200px;
+  }
+}
+
+// Custom button styling for interactive elements
+.btn-custom {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}
+
+// Gradient backgrounds for special slides
+.gradient-bg {
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+  color: white;
+  
+  h1, h2, h3 {
+    color: white;
+  }
+}
+
+// Code syntax highlighting
+.sourceCode {
+  .co { color: #6a737d; } // comments
+  .kw { color: $secondary-color; font-weight: bold; } // keywords
+  .st { color: $success-color; } // strings
+  .fu { color: $primary-color; } // functions
+  .op { color: #586069; } // operators
+}
