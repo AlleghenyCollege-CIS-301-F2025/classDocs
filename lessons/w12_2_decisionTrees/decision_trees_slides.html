@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="decision_trees_slides_files/libs/clipboard/clipboard.min.js"></script>
+<script src="decision_trees_slides_files/libs/quarto-html/tabby.min.js"></script>
+<script src="decision_trees_slides_files/libs/quarto-html/popper.min.js"></script>
+<script src="decision_trees_slides_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="decision_trees_slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="decision_trees_slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="decision_trees_slides_files/libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
+
+  <title>decision_trees_slides</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="decision_trees_slides_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="decision_trees_slides_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="decision_trees_slides_files/libs/revealjs/dist/theme/quarto-08b78e749201a354267edfb9c3dffb87.css">
+  <link rel="stylesheet" href="sql_proj/styles.css">
+  <link href="decision_trees_slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="decision_trees_slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="decision_trees_slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="decision_trees_slides_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="decision_trees_slides_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="decision_trees_slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<center>
+<img data-src="graphics/intro.png">
+</center>
+</section>
+<section id="learning-objectives" class="slide level2 smaller">
+<h2>🎯 Learning Objectives</h2>
+<p>By the end of this presentation, you will:</p>
+<ul>
+<li>🌳 Understand what decision trees are and how they work</li>
+<li>🎯 Learn when to use decision trees for classification &amp; prediction</li>
+<li>🔧 Build your own decision trees in R using <code>rpart</code></li>
+<li>📊 Visualize and interpret decision tree results</li>
+<li>🚀 Apply decision trees to real-world datasets (Titanic, medical data)</li>
+<li>🧠 Make data-driven conclusions with confidence</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>What You’ll Need 📦</strong></p>
+</div>
+<div class="callout-content">
+<p>Make sure you have R and RStudio installed. We’ll be using the <code>rpart</code>, <code>rpart.plot</code>, and <code>tidyverse</code> packages throughout this tutorial!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="before-we-start-required-r-packages" class="slide level2 smaller">
+<h2>🌟 Before We Start: Required R Packages</h2>
+<p><strong>Copy and run this code in your R console to install everything you need:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Essential packages for Decision Trees</span></span>
+<span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rpart"</span>,        <span class="co"># Recursive Partitioning (decision trees)</span></span>
+<span id="cb1-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"rpart.plot"</span>,   <span class="co"># Beautiful tree visualizations</span></span>
+<span id="cb1-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>,    <span class="co"># Data manipulation &amp; visualization</span></span>
+<span id="cb1-6"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="st">"titanic"</span>       <span class="co"># Sample Titanic dataset</span></span>
+<span id="cb1-7"><a href="" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb1-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
+<span id="cb1-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb1-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb1-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-13"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Pro Tip!</strong> 💡 The <code>rpart</code> package is your gateway to building decision trees in R!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="smart-library-loading-automated-setup" class="slide level2 smaller">
+<h2>🛠️ Smart Library Loading (Automated Setup)</h2>
+<p>This code automatically installs packages if they’re missing, then loads them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear the environment for a fresh start</span></span>
+<span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">graphics.off</span>()</span>
+<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart loading: Install if missing, then load rpart</span></span>
+<span id="cb2-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">'rpart'</span>)) {</span>
+<span id="cb2-7"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">'rpart'</span>)</span>
+<span id="cb2-8"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">'rpart'</span>)</span>
+<span id="cb2-9"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-10"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart loading: Install if missing, then load rpart.plot</span></span>
+<span id="cb2-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">'rpart.plot'</span>)) {</span>
+<span id="cb2-13"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">'rpart.plot'</span>)</span>
+<span id="cb2-14"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">'rpart.plot'</span>)</span>
+<span id="cb2-15"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-16"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Smart loading: Install if missing, then load tidyverse</span></span>
+<span id="cb2-18"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">'tidyverse'</span>)) {</span>
+<span id="cb2-19"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">'tidyverse'</span>)</span>
+<span id="cb2-20"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">'tidyverse'</span>)</span>
+<span id="cb2-21"><a href="" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-22"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Load titanic dataset</span></span>
+<span id="cb2-24"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">'titanic'</span>)) {</span>
+<span id="cb2-25"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">'titanic'</span>)</span>
+<span id="cb2-26"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(<span class="st">'titanic'</span>)</span>
+<span id="cb2-27"><a href="" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-none no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>What’s Happening?</strong> This approach means your code works on <strong>any</strong> R installation - perfect for sharing! 🎓</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-a-decision-tree" class="slide level2 smaller">
+<h2>🌳 What is a Decision Tree?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Think of it like a game of “20 Questions”!</strong> 🎮</p>
+<ul>
+<li>Start at the <strong>root</strong> (top)</li>
+<li>Ask a <strong>yes/no question</strong> at each node</li>
+<li>Follow the branches based on answers</li>
+<li>Reach a <strong>leaf</strong> (conclusion) at the bottom</li>
+</ul>
+<p><strong>Real-life Example:</strong> “Should I bring an umbrella?” 🌂</p>
+<ul>
+<li>Is it cloudy? → Yes → Will it rain? → Yes → <strong>Bring umbrella!</strong></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Decision Tree Structure:</strong></p>
+<pre><code>        [Is it cloudy?]
+           /        \
+         Yes         No
+         /             \
+   [Will rain?]    [Don't bring]
+      /    \
+    Yes     No
+    /         \
+[Bring!]  [Maybe bring]</code></pre>
+<p><strong>Key Terms:</strong></p>
+<ul>
+<li>🌱 <strong>Root Node</strong>: Starting point</li>
+<li>🌿 <strong>Internal Nodes</strong>: Decision points</li>
+<li>🍃 <strong>Leaf Nodes</strong>: Final outcomes</li>
+<li>🌿 <strong>Branches</strong>: Connections between nodes</li>
+</ul>
+</div></div>
+</section>
+<section id="why-use-decision-trees" class="slide level2 smaller">
+<h2>🎯 Why Use Decision Trees?</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">🚀 Advantages</a></li><li><a href="#tabset-1-2">⚠️ Limitations</a></li><li><a href="#tabset-1-3">💡 Best Use Cases</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li>✅ <strong>Easy to understand</strong> - Visual and intuitive!</li>
+<li>✅ <strong>No data prep needed</strong> - Works with raw data</li>
+<li>✅ <strong>Handles mixed data</strong> - Numeric &amp; categorical</li>
+<li>✅ <strong>Non-parametric</strong> - No assumptions about data distribution</li>
+<li>✅ <strong>Feature importance</strong> - Shows which variables matter most</li>
+<li>✅ <strong>Quick to train</strong> - Fast even on large datasets</li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<ul>
+<li>❌ <strong>Overfitting risk</strong> - Can memorize training data</li>
+<li>❌ <strong>Unstable</strong> - Small data changes = different tree</li>
+<li>❌ <strong>Biased to dominant classes</strong> - Imbalanced data issues</li>
+<li>❌ <strong>Not always optimal</strong> - Greedy algorithm</li>
+<li>❌ <strong>Struggles with linear relationships</strong></li>
+</ul>
+</div>
+<div id="tabset-1-3">
+<p><strong>Perfect for:</strong></p>
+<ul>
+<li>🏥 Medical diagnosis (disease present/absent?)</li>
+<li>💳 Credit approval (approve/reject loan?)</li>
+<li>📧 Spam detection (spam/not spam?)</li>
+<li>🎓 Student performance (pass/fail?)</li>
+<li>⚽ Sports outcomes (win/lose/draw?)</li>
+<li>🐾 Species classification (cat/dog/rabbit?)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="how-decision-trees-work-the-algorithm" class="slide level2 smaller">
+<h2>🔬 How Decision Trees Work: The Algorithm</h2>
+<p><strong>Step-by-Step Process:</strong></p>
+<ol type="1">
+<li><strong>Start with all data</strong> at the root node 🌱</li>
+<li><strong>Find the best split</strong> - Which feature separates classes best?
+<ul>
+<li>Measure “purity” using <strong>Gini Index</strong> or <strong>Information Gain</strong></li>
+</ul></li>
+<li><strong>Split the data</strong> into subgroups based on that feature</li>
+<li><strong>Repeat</strong> for each subgroup (recursively!)</li>
+<li><strong>Stop when:</strong>
+<ul>
+<li>All samples in a node are the same class ✅</li>
+<li>Maximum depth reached 📏</li>
+<li>Too few samples to split 🔢</li>
+</ul></li>
+</ol>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Key Concept: Splitting Criteria 📊</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Gini Index:</strong> Measures impurity (0 = pure, 0.5 = mixed)</p>
+<p><strong>Information Gain:</strong> Reduction in entropy (uncertainty)</p>
+<p>The algorithm picks the split that gives the <strong>best improvement</strong>!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="simple-example-animal-classification" class="slide level2 smaller">
+<h2>🎲 Simple Example: Animal Classification</h2>
+<p><strong>Goal:</strong> Classify animals as Cat, Dog, Rabbit, or Bird</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample animal dataset</span></span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fu">c</span>(<span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>, <span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"small"</span>, </span>
+<span id="cb4-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="st">"large"</span>, <span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>, <span class="st">"small"</span>, <span class="st">"medium"</span>),</span>
+<span id="cb4-6"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">"brown"</span>, <span class="st">"black"</span>, <span class="st">"white"</span>, <span class="st">"gray"</span>, <span class="st">"brown"</span>, <span class="st">"white"</span>,</span>
+<span id="cb4-7"><a href="" aria-hidden="true" tabindex="-1"></a>            <span class="st">"black"</span>, <span class="st">"gray"</span>, <span class="st">"brown"</span>, <span class="st">"white"</span>, <span class="st">"orange"</span>, <span class="st">"black"</span>),</span>
+<span id="cb4-8"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"dog"</span>, <span class="st">"rabbit"</span>, <span class="st">"dog"</span>, <span class="st">"bird"</span>,</span>
+<span id="cb4-9"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="st">"dog"</span>, <span class="st">"rabbit"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>)</span>
+<span id="cb4-10"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(animals, <span class="dv">6</span>)  <span class="co"># Show fewer rows for cleaner display</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    size color   type
+1  small brown    cat
+2 medium black    dog
+3  large white    dog
+4  small  gray rabbit
+5 medium brown    dog
+6  small white   bird</code></pre>
+</div>
+</div>
+<!-- 
+::: {.callout-tip}
+## Why Start Simple? 🎯
+This small dataset helps us understand how decision trees work without getting overwhelmed. Once you master this, scaling to larger datasets is easy!
+::: -->
+</section>
+<section id="building-our-first-decision-tree" class="slide level2 smaller">
+<h2>🌳 Building Our First Decision Tree</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build decision tree</span></span>
+<span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a>animal_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(type <span class="sc">~</span> size <span class="sc">+</span> color, <span class="at">data =</span> animals, <span class="at">method =</span> <span class="st">"class"</span>)</span>
+<span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Display model summary</span></span>
+<span id="cb6-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(animal_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n= 12 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+1) root 12 6 dog (0.08333333 0.25000000 0.50000000 0.16666667) *</code></pre>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Reading the Output 📖</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>node)</strong>: Node number in the tree</li>
+<li><strong>split</strong>: The condition used to split this node</li>
+<li><strong>n</strong>: Number of observations at this node</li>
+<li><strong>loss</strong>: Number of misclassifications</li>
+<li><strong>yval</strong>: Predicted class for this node</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-the-model-output" class="slide level2 smaller">
+<h2>📊 Understanding the Model Output</h2>
+<p><strong>Let’s decode what <code>print(animal_model)</code> shows us:</strong></p>
+<p>The output displays a text representation of the decision tree structure:</p>
+<pre><code>n=20  (total number of observations)
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal (leaf) node</code></pre>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong>Node number</strong>: Each decision point gets a unique ID</li>
+<li><strong>Split condition</strong>: The rule used (e.g., “size=large,medium”)<br>
+</li>
+<li><strong>n</strong>: How many animals reach this node</li>
+<li><strong>loss</strong>: How many would be misclassified using this node’s prediction</li>
+<li><strong>yval</strong>: The predicted class (cat, dog, bird, rabbit)</li>
+<li><strong>yprob</strong>: Probability distribution across all classes</li>
+</ul>
+</section>
+<section id="reading-a-node-example" class="slide level2 smaller">
+<h2>📖 Reading a Node Example</h2>
+<p><strong>Example from the output:</strong></p>
+<pre><code>1) root 20 10 dog (0.25 0.50 0.15 0.10)
+2) size=large,medium 12  2 dog (0.17 0.83 0.00 0.00) *</code></pre>
+<p><strong>Breaking it down:</strong></p>
+<p><strong>Node 1 (root):</strong></p>
+<ul>
+<li><code>20</code> observations total</li>
+<li><code>10</code> misclassifications if we guess “dog” for everyone</li>
+<li>Predicts <code>dog</code> as most common class</li>
+<li>Probabilities: 25% cat, 50% dog, 15% bird, 10% rabbit</li>
+</ul>
+<p><strong>Node 2:</strong></p>
+<ul>
+<li>Animals with <code>size=large,medium</code></li>
+<li><code>12</code> observations reached this node</li>
+<li>Only <code>2</code> misclassifications (pretty good!)</li>
+<li>Predicts <code>dog</code> with 83% probability</li>
+<li><code>*</code> means this is a <strong>terminal node</strong> (no further splits)</li>
+</ul>
+</section>
+<section id="animal-classification-tree-visualization" class="slide level2 smaller">
+<h2>🌳 Animal Classification Tree Visualization</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the tree</span></span>
+<span id="cb10-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(animal_model, </span>
+<span id="cb10-3"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"🐾 Animal Classification Tree"</span>,</span>
+<span id="cb10-4"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">104</span>,  <span class="co"># Show probabilities</span></span>
+<span id="cb10-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">fallen.leaves =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-6"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"GnBu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<!-- ::: {style="text-align: center; font-size: 1.8em;"} -->
+<img data-src="decision_trees_slides_files/figure-revealjs/animal-tree-plot-1.png" width="960" class="r-stretch"><p><strong>Note</strong>: the probabilities refer to the number of dogs in the data who happen to be brown, black, gray and white. <!-- ::: --></p>
+</section>
+<section id="understanding-the-animal-tree-output" class="slide level2 smaller">
+<h2>🌳 Understanding the Animal Tree Output</h2>
+<p><strong>What do we see?</strong> 🤔</p>
+<ul>
+<li>The tree asks about <strong>size</strong> first (most important!)</li>
+<li>Then uses <strong>color</strong> to refine predictions<br>
+</li>
+<li>Numbers show: class/probability/percentage of data</li>
+</ul>
+<p><strong>Reading the model output:</strong></p>
+<ul>
+<li>Node splits based on feature values</li>
+<li>Terminal nodes show final classifications</li>
+<li>Each node displays the predicted class and split criteria</li>
+</ul>
+</section>
+<section id="interpreting-the-tree" class="slide level2 smaller">
+<h2>🔍 Interpreting the Tree</h2>
+<p><strong>Reading the Animal Tree:</strong> 📖</p>
+<!-- ::: {.incremental} -->
+<ol type="1">
+<li><strong>Root Node:</strong> Starts with all animals</li>
+<li><strong>First Split:</strong> “Is size = large?”
+<ul>
+<li><strong>Yes</strong> → Likely a <strong>dog</strong> (large animals)</li>
+<li><strong>No</strong> → Continue asking questions</li>
+</ul></li>
+<li><strong>Second Split:</strong> “Is size = small?”
+<ul>
+<li><strong>Yes</strong> → Check color next</li>
+<li><strong>No</strong> (medium) → Likely a <strong>dog</strong></li>
+</ul></li>
+<li><strong>Leaf Nodes:</strong> Final predictions
+<ul>
+<li>Small + brown/gray → <strong>cat</strong></li>
+<li>Small + white/orange → <strong>bird</strong> or <strong>rabbit</strong> <!-- ::: --></li>
+</ul></li>
+</ol>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Pro Tip!</strong> 💡 Follow the path from root to leaf to see the decision rules!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="real-world-example-titanic-survival" class="slide level2 smaller">
+<h2>🚢 Real-World Example: Titanic Survival</h2>
+
+<img data-src="graphics/titanic.png" class="r-stretch"><p><strong>The Challenge:</strong> Predict who survived the Titanic disaster</p>
+</section>
+<section id="create-dataframe" class="slide level2 smaller">
+<h2>Create Dataframe</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and explore Titanic data</span></span>
+<span id="cb11-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"titanic_train"</span>)</span>
+<span id="cb11-3"><a href="" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="ot">&lt;-</span> titanic_train <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Survived, Pclass, Sex, Age, Fare, SibSp, Parch) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()  <span class="co"># Remove missing values for simplicity</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Dataset Preparation 📦</strong></p>
+</div>
+<div class="callout-content">
+<p>We’ve selected key variables and removed missing values for simplicity. In production, you’d want to handle missing data more carefully!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="data-preview" class="slide level2 smaller">
+<h2>Data Preview</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick look at the data</span></span>
+<span id="cb12-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 714
+Columns: 7
+$ Survived &lt;int&gt; 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1…
+$ Pclass   &lt;int&gt; 3, 1, 3, 1, 3, 1, 3, 3, 2, 3, 1, 3, 3, 3, 2, 3, 3, 2, 2, 3, 1…
+$ Sex      &lt;chr&gt; "male", "female", "female", "female", "male", "male", "male",…
+$ Age      &lt;dbl&gt; 22, 38, 26, 35, 35, 54, 2, 27, 14, 4, 58, 20, 39, 14, 55, 2, …
+$ Fare     &lt;dbl&gt; 7.2500, 71.2833, 7.9250, 53.1000, 8.0500, 51.8625, 21.0750, 1…
+$ SibSp    &lt;int&gt; 1, 1, 0, 1, 0, 0, 3, 0, 1, 1, 0, 0, 1, 0, 0, 4, 1, 0, 0, 0, 0…
+$ Parch    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb14-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Total observations:"</span>, <span class="fu">nrow</span>(titanic_data), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Total observations: 714 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Survival rate:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(titanic_data<span class="sc">$</span>Survived) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Survival rate: 40.6 %</code></pre>
+</div>
+</div>
+</section>
+<section id="titanic-dataset-overview" class="slide level2 smaller">
+<h2>📊 Titanic Dataset Overview</h2>
+<p><strong>Dataset Information:</strong> 🛳️</p>
+<ul>
+<li><strong>Survived:</strong> 0 = No, 1 = Yes (our target!)</li>
+<li><strong>Pclass:</strong> Passenger class (1st, 2nd, 3rd)</li>
+<li><strong>Sex:</strong> Male or Female</li>
+<li><strong>Age:</strong> Age in years</li>
+<li><strong>Fare:</strong> Ticket price</li>
+<li><strong>SibSp:</strong> Number of siblings/spouses aboard</li>
+<li><strong>Parch:</strong> Number of parents/children aboard</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Why This Dataset? 🌊</strong></p>
+</div>
+<div class="callout-content">
+<p>The Titanic dataset is perfect for learning classification because it has a mix of categorical (Sex, Pclass) and continuous variables (Age, Fare), and the target is clearly binary. Plus, the historical context makes the results meaningful!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="building-the-titanic-model" class="slide level2 smaller">
+<h2>🌳 Building the Titanic Model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build decision tree for Titanic survival</span></span>
+<span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a>titanic_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb18-3"><a href="" aria-hidden="true" tabindex="-1"></a>  Survived <span class="sc">~</span> Pclass <span class="sc">+</span> Sex <span class="sc">+</span> Age <span class="sc">+</span> Fare <span class="sc">+</span> SibSp <span class="sc">+</span> Parch,</span>
+<span id="cb18-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> titanic_data,</span>
+<span id="cb18-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"class"</span>,</span>
+<span id="cb18-6"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">cp =</span> <span class="fl">0.02</span>)  <span class="co"># Complexity parameter</span></span>
+<span id="cb18-7"><a href="" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Model Configuration ⚙️</strong></p>
+</div>
+<div class="callout-content">
+<p>We’re using <code>cp = 0.02</code> to prevent overfitting. This creates a balanced tree that’s complex enough to be useful but simple enough to generalize well.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="titanic-model-structure" class="slide level2 smaller">
+<h2>🌳 Titanic Model Structure</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Display model summary</span></span>
+<span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(titanic_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n= 714 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+ 1) root 714 290 0 (0.59383754 0.40616246)  
+   2) Sex=male 453  93 0 (0.79470199 0.20529801)  
+     4) Age&gt;=6.5 429  77 0 (0.82051282 0.17948718) *
+     5) Age&lt; 6.5 24   8 1 (0.33333333 0.66666667)  
+      10) SibSp&gt;=2.5 9   1 0 (0.88888889 0.11111111) *
+      11) SibSp&lt; 2.5 15   0 1 (0.00000000 1.00000000) *
+   3) Sex=female 261  64 1 (0.24521073 0.75478927)  
+     6) Pclass&gt;=2.5 102  47 0 (0.53921569 0.46078431)  
+      12) Fare&gt;=20.8 23   3 0 (0.86956522 0.13043478) *
+      13) Fare&lt; 20.8 79  35 1 (0.44303797 0.55696203) *
+     7) Pclass&lt; 2.5 159   9 1 (0.05660377 0.94339623) *</code></pre>
+</div>
+</div>
+</section>
+<section id="titanic-model-visualization" class="slide level2 smaller">
+<h2>🌳 Titanic Model Visualization</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the tree</span></span>
+<span id="cb21-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(titanic_model,</span>
+<span id="cb21-3"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"🚢 Titanic Survival Prediction Tree"</span>,</span>
+<span id="cb21-4"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">104</span>,</span>
+<span id="cb21-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"RdYlGn"</span>,</span>
+<span id="cb21-6"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">shadow.col =</span> <span class="st">"gray"</span>,</span>
+<span id="cb21-7"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">fallen.leaves =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/titanic-tree-plot-1.png" width="960" class="r-stretch"></section>
+<section id="key-insights-from-titanic-tree" class="slide level2 smaller">
+<h2>🎯 Key Insights from Titanic Tree</h2>
+<p><strong>What the tree reveals:</strong> 🔍</p>
+<ul>
+<li>🚺 <strong>Sex is the most important factor!</strong>
+<ul>
+<li>Males had much lower survival rates</li>
+<li>Females had higher survival rates</li>
+</ul></li>
+<li>🎫 <strong>Passenger Class matters:</strong>
+<ul>
+<li>1st class passengers → better survival</li>
+<li>3rd class passengers → lower survival</li>
+</ul></li>
+<li>👶 <strong>Age plays a role:</strong>
+<ul>
+<li>Children had better chances</li>
+<li>Older males had lowest survival</li>
+</ul></li>
+</ul>
+</section>
+<section id="historical-context" class="slide level2 smaller">
+<h2>🎯 Historical Context</h2>
+<p><strong>“Women and children first!” policy clearly visible in data!</strong> 🛟</p>
+<p>The decision tree reveals historical emergency protocols:</p>
+<ul>
+<li>Gender was the primary decision factor</li>
+<li>Social class influenced survival chances</li>
+<li>Age was considered after gender and class</li>
+<li>The tree structure mirrors actual evacuation priorities</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Machine Learning Meets History 📜</strong></p>
+</div>
+<div class="callout-content">
+<p>This is a powerful example of how ML can uncover patterns in historical data. The tree didn’t know about the “women and children first” policy—it discovered it from the data alone!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="model-performance-metrics-i" class="slide level2 smaller">
+<h2>📊 Model Performance Metrics (I)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Get predictions</span></span>
+<span id="cb22-2"><a href="" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(titanic_model, titanic_data, <span class="at">type =</span> <span class="st">"class"</span>)</span>
+<span id="cb22-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create confusion matrix</span></span>
+<span id="cb22-5"><a href="" aria-hidden="true" tabindex="-1"></a>confusion_matrix <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">Actual =</span> titanic_data<span class="sc">$</span>Survived, </span>
+<span id="cb22-6"><a href="" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Predicted =</span> predictions)</span>
+<span id="cb22-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(confusion_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Predicted
+Actual   0   1
+     0 380  44
+     1  81 209</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate accuracy</span></span>
+<span id="cb24-2"><a href="" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(confusion_matrix)) <span class="sc">/</span> <span class="fu">sum</span>(confusion_matrix)</span>
+<span id="cb24-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">🎯 Model Accuracy:"</span>, <span class="fu">round</span>(accuracy <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+🎯 Model Accuracy: 82.49 %</code></pre>
+</div>
+</div>
+</section>
+<section id="model-performance-metrics-ii" class="slide level2 smaller">
+<h2>📊 Model Performance Metrics (II)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate additional metrics</span></span>
+<span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a>precision <span class="ot">&lt;-</span> confusion_matrix[<span class="dv">2</span>,<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(confusion_matrix[,<span class="dv">2</span>])</span>
+<span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a>recall <span class="ot">&lt;-</span> confusion_matrix[<span class="dv">2</span>,<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(confusion_matrix[<span class="dv">2</span>,])</span>
+<span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Precision:"</span>, <span class="fu">round</span>(precision <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Precision: 82.61 %</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Recall:"</span>, <span class="fu">round</span>(recall <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Recall: 72.07 %</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-model-performance" class="slide level2 smaller">
+<h2>📊 Understanding Model Performance</h2>
+<p><strong>What does this mean?</strong> 🤔</p>
+<ul>
+<li>Our tree correctly predicts survival ~<strong>80%</strong> of the time!</li>
+<li><strong>Confusion Matrix</strong> shows:
+<ul>
+<li>True Positives: Correctly predicted survivors</li>
+<li>True Negatives: Correctly predicted non-survivors</li>
+<li>False Positives: Predicted survival but didn’t survive</li>
+<li>False Negatives: Predicted death but survived</li>
+</ul></li>
+<li><strong>Precision:</strong> Of those we predicted survived, how many actually did?</li>
+<li><strong>Recall:</strong> Of those who survived, how many did we identify?</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Improving Performance 🚀</strong></p>
+</div>
+<div class="callout-content">
+<p>Not happy with 80%? Try adjusting the <code>cp</code> parameter, adding feature engineering, or using ensemble methods like Random Forests!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tuning-decision-trees-control-parameters" class="slide level2 smaller">
+<h2>🔧 Tuning Decision Trees: Control Parameters</h2>
+<p><strong>Important <code>rpart.control()</code> parameters:</strong></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a>control <span class="ot">=</span> <span class="fu">rpart.control</span>(</span>
+<span id="cb30-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">cp =</span> <span class="fl">0.01</span>,        <span class="co"># Complexity parameter</span></span>
+<span id="cb30-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">minsplit =</span> <span class="dv">20</span>,    <span class="co"># Min observations to split</span></span>
+<span id="cb30-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">minbucket =</span> <span class="dv">7</span>,    <span class="co"># Min observations in leaf</span></span>
+<span id="cb30-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">maxdepth =</span> <span class="dv">10</span>     <span class="co"># Maximum tree depth</span></span>
+<span id="cb30-6"><a href="" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Parameter Effects:</strong></p>
+<ul>
+<li>Lower <code>cp</code> → more complex tree</li>
+<li>Higher <code>minsplit</code> → simpler tree</li>
+<li>Higher <code>minbucket</code> → fewer, larger leaves</li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Balance Complexity! ⚖️</strong></p>
+</div>
+<div class="callout-content">
+<p>Too simple = underfitting (misses patterns). Too complex = overfitting (memorizes noise). Finding the sweet spot is key!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-tree-complexities" class="slide level2 smaller">
+<h2>🔧 Comparing Tree Complexities</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build trees with different settings</span></span>
+<span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a>tree_default <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> Pclass <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
+<span id="cb31-3"><a href="" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> titanic_data, <span class="at">method =</span> <span class="st">"class"</span>)</span>
+<span id="cb31-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="" aria-hidden="true" tabindex="-1"></a>tree_complex <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> Pclass <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
+<span id="cb31-6"><a href="" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data =</span> titanic_data, <span class="at">method =</span> <span class="st">"class"</span>,</span>
+<span id="cb31-7"><a href="" aria-hidden="true" tabindex="-1"></a>                      <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">cp =</span> <span class="fl">0.001</span>))</span>
+<span id="cb31-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="" aria-hidden="true" tabindex="-1"></a>tree_simple <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> Pclass <span class="sc">+</span> Sex <span class="sc">+</span> Age, </span>
+<span id="cb31-10"><a href="" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> titanic_data, <span class="at">method =</span> <span class="st">"class"</span>,</span>
+<span id="cb31-11"><a href="" aria-hidden="true" tabindex="-1"></a>                     <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">cp =</span> <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Compare &amp; Learn 📊</strong></p>
+</div>
+<div class="callout-content">
+<p>We’ll visualize all three trees on the next slides. Notice how the complexity parameter (<code>cp</code>) dramatically changes the tree structure!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="default-tree-visualization" class="slide level2 smaller">
+<h2>🔧 Default Tree Visualization</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_default, <span class="at">main =</span> <span class="st">"Default Settings"</span>, <span class="at">box.palette =</span> <span class="st">"Blues"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/tree-default-plot-1.png" width="960" class="r-stretch"></section>
+<section id="complex-tree-visualization" class="slide level2 smaller">
+<h2>🔧 Complex Tree Visualization</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_complex, <span class="at">main =</span> <span class="st">"More Complex (cp=0.001)"</span>, <span class="at">box.palette =</span> <span class="st">"Greens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/tree-complex-plot-1.png" width="960" class="r-stretch"></section>
+<section id="simple-tree-visualization" class="slide level2 smaller">
+<h2>🔧 Simple Tree Visualization</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree_simple, <span class="at">main =</span> <span class="st">"Simpler (cp=0.05)"</span>, <span class="at">box.palette =</span> <span class="st">"Oranges"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/tree-simple-plot-1.png" width="960" class="r-stretch"></section>
+<section id="go-play" class="slide level2">
+<h2>GO Play!</h2>
+
+<img data-src="graphics/titanicApp.png" style="width:100.0%" class="r-stretch"><div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Checkout App: <code>titanic_shinyApp.R</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="medical-example-kyphosis-dataset" class="slide level2 smaller">
+<h2>🏥 Medical Example: Kyphosis Dataset</h2>
+<p><strong>Kyphosis:</strong> Spinal deformation after corrective surgery</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Load built-in kyphosis dataset</span></span>
+<span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(kyphosis)</span>
+<span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kyphosis, <span class="dv">6</span>)  <span class="co"># Show fewer rows to fit on slide</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Kyphosis Age Number Start
+1   absent  71      3     5
+2   absent 158      3    14
+3  present 128      4     5
+4   absent   2      5     1
+5   absent   1      4    15
+6   absent   1      2    16</code></pre>
+</div>
+</div>
+<p><strong>Variables Explained:</strong> 📋</p>
+<ul>
+<li><strong>Kyphosis:</strong> <code>absent</code> or <code>present</code> after surgery</li>
+<li><strong>Age:</strong> Child’s age in months</li>
+<li><strong>Number:</strong> Number of vertebrae involved</li>
+<li><strong>Start:</strong> Number of first vertebra operated on</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Real-World Impact 🏥</strong></p>
+</div>
+<div class="callout-content">
+<p>This demonstrates how decision trees can assist medical professionals in predicting surgical outcomes, helping them make informed decisions about treatment plans!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="building-kyphosis-model" class="slide level2 smaller">
+<h2>🌳 Building Kyphosis Model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build decision tree for kyphosis</span></span>
+<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a>kyphosis_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Age <span class="sc">+</span> Number <span class="sc">+</span> Start, </span>
+<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> kyphosis,</span>
+<span id="cb37-4"><a href="" aria-hidden="true" tabindex="-1"></a>                        <span class="at">method =</span> <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="kyphosis-model-structure" class="slide level2 smaller">
+<h2>🌳 Kyphosis Model Structure</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Display model structure</span></span>
+<span id="cb38-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kyphosis_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n= 81 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+ 1) root 81 17 absent (0.79012346 0.20987654)  
+   2) Start&gt;=8.5 62  6 absent (0.90322581 0.09677419)  
+     4) Start&gt;=14.5 29  0 absent (1.00000000 0.00000000) *
+     5) Start&lt; 14.5 33  6 absent (0.81818182 0.18181818)  
+      10) Age&lt; 55 12  0 absent (1.00000000 0.00000000) *
+      11) Age&gt;=55 21  6 absent (0.71428571 0.28571429)  
+        22) Age&gt;=111 14  2 absent (0.85714286 0.14285714) *
+        23) Age&lt; 111 7  3 present (0.42857143 0.57142857) *
+   3) Start&lt; 8.5 19  8 present (0.42105263 0.57894737) *</code></pre>
+</div>
+</div>
+</section>
+<section id="kyphosis-prediction-tree-visualization" class="slide level2 smaller">
+<h2>🌳 Kyphosis Prediction Tree Visualization</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb40-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(kyphosis_model,</span>
+<span id="cb40-3"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"🏥 Kyphosis Prediction Tree"</span>,</span>
+<span id="cb40-4"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">104</span>,</span>
+<span id="cb40-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"Purples"</span>,</span>
+<span id="cb40-6"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">fallen.leaves =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/kyphosis-tree-plot-1.png" width="960" class="r-stretch"></section>
+<section id="medical-insights-from-tree" class="slide level2 smaller">
+<h2>🔍 Medical Insights from Tree</h2>
+<p><strong>Clinical Decision Rules:</strong> 🏥</p>
+<p><strong>Start position is crucial:</strong></p>
+<ul>
+<li>If surgery starts at vertebra ≥ 8.5 → Lower risk</li>
+<li>If surgery starts &lt; 8.5 → Check other factors</li>
+</ul>
+<p><strong>Age matters for high-start surgeries:</strong></p>
+<ul>
+<li>Young children (&lt; 55 months) with low start → Higher risk</li>
+<li>Older children → Lower risk</li>
+</ul>
+<p><strong>Number of vertebrae involved:</strong></p>
+<ul>
+<li>More vertebrae involved → Different risk profile</li>
+</ul>
+<p><strong>Clinical Value:</strong> Doctors can use this to predict outcomes! 🩺</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Interpretability is Key 🔑</strong></p>
+</div>
+<div class="callout-content">
+<p>Unlike “black box” models, decision trees show <em>why</em> a prediction was made. This is crucial in healthcare where doctors need to explain decisions!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-importance" class="slide level2 smaller">
+<h2>📈 Variable Importance</h2>
+<p><strong>Which features matter most?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Get variable importance for Titanic model</span></span>
+<span id="cb41-2"><a href="" aria-hidden="true" tabindex="-1"></a>importance <span class="ot">&lt;-</span> titanic_model<span class="sc">$</span>variable.importance</span>
+<span id="cb41-3"><a href="" aria-hidden="true" tabindex="-1"></a>importance_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">names</span>(importance),</span>
+<span id="cb41-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">Importance =</span> importance</span>
+<span id="cb41-6"><a href="" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Importance))</span>
+<span id="cb41-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(importance_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Variable Importance
+Sex         Sex   99.99817
+Pclass   Pclass   32.89624
+Fare       Fare   31.69365
+Age         Age   17.32819
+Parch     Parch   14.46204
+SibSp     SibSp   13.69736</code></pre>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Understanding Importance Scores 📈</strong></p>
+</div>
+<div class="callout-content">
+<p>These scores measure how much each variable improves the tree’s predictions. Higher scores = more important for making accurate classifications!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="variable-importance-plot" class="slide level2 smaller">
+<h2>📈 Variable Importance Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb43-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(importance_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Variable, Importance), <span class="at">y =</span> Importance)) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb43-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"🎯 Feature Importance in Titanic Model"</span>,</span>
+<span id="cb43-6"><a href="" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Variable"</span>, <span class="at">y =</span> <span class="st">"Importance Score"</span>) <span class="sc">+</span></span>
+<span id="cb43-7"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb43-8"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/variable-importance-plot-1.png" width="960" class="r-stretch"><p><strong>Sex dominates!</strong> Gender was the most important predictor. 🚺🚹</p>
+</section>
+<section id="advanced-visualization-options" class="slide level2 smaller">
+<h2>🎨 Advanced Visualization Options</h2>
+<p><strong>Making trees even more beautiful:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a fancy tree</span></span>
+<span id="cb44-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(titanic_model,</span>
+<span id="cb44-3"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="dv">4</span>,</span>
+<span id="cb44-4"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">106</span>,</span>
+<span id="cb44-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"RdYlGn"</span>,</span>
+<span id="cb44-6"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">branch.lty =</span> <span class="dv">3</span>,</span>
+<span id="cb44-7"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">shadow.col =</span> <span class="st">"gray"</span>,</span>
+<span id="cb44-8"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">nn =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb44-9"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">fallen.leaves =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb44-10"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"🎨 Beautifully Styled Titanic Tree"</span>,</span>
+<span id="cb44-11"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">tweak =</span> <span class="fl">1.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/advanced-viz-1.png" width="960" class="r-stretch"></section>
+<section id="comparing-multiple-models" class="slide level2 smaller">
+<h2>🔄 Comparing Multiple Models</h2>
+<p><strong>Let’s test different configurations:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three models with different parameters</span></span>
+<span id="cb45-2"><a href="" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Start, <span class="at">data =</span> kyphosis)</span>
+<span id="cb45-3"><a href="" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Start, <span class="at">data =</span> kyphosis,</span>
+<span id="cb45-4"><a href="" aria-hidden="true" tabindex="-1"></a>                <span class="at">parms =</span> <span class="fu">list</span>(<span class="at">prior =</span> <span class="fu">c</span>(.<span class="dv">65</span>, .<span class="dv">35</span>), <span class="at">split =</span> <span class="st">"information"</span>))</span>
+<span id="cb45-5"><a href="" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Kyphosis <span class="sc">~</span> Start, <span class="at">data =</span> kyphosis,</span>
+<span id="cb45-6"><a href="" aria-hidden="true" tabindex="-1"></a>                <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">cp =</span> <span class="fl">0.05</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="model-1-default-settings" class="slide level2 smaller">
+<h2>🔄 Model 1: Default Settings</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(model1, <span class="at">main =</span> <span class="st">"Model 1: Default"</span>, <span class="at">box.palette =</span> <span class="st">"Blues"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/model1-plot-1.png" width="960" class="r-stretch"></section>
+<section id="model-2-prior-probabilities" class="slide level2 smaller">
+<h2>🔄 Model 2: Prior Probabilities</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(model2, <span class="at">main =</span> <span class="st">"Model 2: Prior Probabilities"</span>, <span class="at">box.palette =</span> <span class="st">"Greens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/model2-plot-1.png" width="960" class="r-stretch"></section>
+<section id="model-3-higher-cp" class="slide level2 smaller">
+<h2>🔄 Model 3: Higher CP</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(model3, <span class="at">main =</span> <span class="st">"Model 3: Higher CP"</span>, <span class="at">box.palette =</span> <span class="st">"Oranges"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/model3-plot-1.png" width="960" class="r-stretch"></section>
+<section id="making-predictions-with-your-tree" class="slide level2 smaller">
+<h2>🎯 Making Predictions with Your Tree</h2>
+<p><strong>Using the model on new data:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new patient data</span></span>
+<span id="cb49-2"><a href="" aria-hidden="true" tabindex="-1"></a>new_patients <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb49-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">120</span>, <span class="dv">80</span>),</span>
+<span id="cb49-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">Number =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>),</span>
+<span id="cb49-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">Start =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">9</span>)</span>
+<span id="cb49-6"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb49-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions</span></span>
+<span id="cb49-9"><a href="" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(kyphosis_model, new_patients, <span class="at">type =</span> <span class="st">"class"</span>)</span>
+<span id="cb49-10"><a href="" aria-hidden="true" tabindex="-1"></a>probabilities <span class="ot">&lt;-</span> <span class="fu">predict</span>(kyphosis_model, new_patients, <span class="at">type =</span> <span class="st">"prob"</span>)</span>
+<span id="cb49-11"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb49-13"><a href="" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">cbind</span>(new_patients, </span>
+<span id="cb49-14"><a href="" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Prediction =</span> predictions,</span>
+<span id="cb49-15"><a href="" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Prob_Absent =</span> <span class="fu">round</span>(probabilities[, <span class="dv">1</span>], <span class="dv">3</span>),</span>
+<span id="cb49-16"><a href="" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Prob_Present =</span> <span class="fu">round</span>(probabilities[, <span class="dv">2</span>], <span class="dv">3</span>))</span>
+<span id="cb49-17"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Age Number Start Prediction Prob_Absent Prob_Present
+1  50      3     5    present       0.421        0.579
+2 120      5    12     absent       0.857        0.143
+3  80      4     9    present       0.429        0.571</code></pre>
+</div>
+</div>
+</section>
+<section id="interpreting-predictions" class="slide level2 smaller">
+<h2>🎯 Interpreting Predictions</h2>
+<p><strong>Understanding the results:</strong> 📊</p>
+<ul>
+<li><strong>Patient 1:</strong> High risk (present)
+<ul>
+<li>Young age, low start position</li>
+</ul></li>
+<li><strong>Patient 2:</strong> Low risk (absent)
+<ul>
+<li>Older age, high start position</li>
+</ul></li>
+<li><strong>Patient 3:</strong> Low risk (absent)
+<ul>
+<li>Moderate factors</li>
+</ul></li>
+</ul>
+<p>The model provides both class predictions and probabilities for each outcome.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Probabilistic Predictions 🎲</strong></p>
+</div>
+<div class="callout-content">
+<p>The probabilities show confidence levels! A 90% probability is much more certain than a 51% probability, even though both might have the same predicted class.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-demo-build-your-own-tree" class="slide level2 smaller">
+<h2>🧪 Interactive Demo: Build Your Own Tree!</h2>
+<p><strong>Let’s create a custom dataset and tree:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create your own classification problem</span></span>
+<span id="cb51-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb51-3"><a href="" aria-hidden="true" tabindex="-1"></a>custom_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb51-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_hours =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">attendance =</span> <span class="fu">sample</span>(<span class="dv">60</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-6"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">assignments =</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb51-7"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">grade =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Pass"</span>, <span class="st">"Fail"</span>), <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb51-8"><a href="" aria-hidden="true" tabindex="-1"></a>                 <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>))</span>
+<span id="cb51-9"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-10"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build tree</span></span>
+<span id="cb51-12"><a href="" aria-hidden="true" tabindex="-1"></a>student_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(grade <span class="sc">~</span> study_hours <span class="sc">+</span> attendance <span class="sc">+</span> assignments,</span>
+<span id="cb51-13"><a href="" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> custom_data, <span class="at">method =</span> <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="student-performance-tree" class="slide level2 smaller">
+<h2>🧪 Student Performance Tree</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb52-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(student_model,</span>
+<span id="cb52-3"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"🎓 Student Performance Predictor"</span>,</span>
+<span id="cb52-4"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"GnBu"</span>,</span>
+<span id="cb52-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">104</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/custom-demo-plot-1.png" width="960" class="r-stretch"><p><strong>Try it yourself!</strong> 💡 Modify the data and see how the tree changes!</p>
+</section>
+<section id="pruning-preventing-overfitting" class="slide level2 smaller">
+<h2>📊 Pruning: Preventing Overfitting</h2>
+<p><strong>Trees can get too complex - let’s prune them!</strong> ✂️</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a complex tree</span></span>
+<span id="cb53-2"><a href="" aria-hidden="true" tabindex="-1"></a>complex_tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> ., <span class="at">data =</span> titanic_data, </span>
+<span id="cb53-3"><a href="" aria-hidden="true" tabindex="-1"></a>                      <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">cp =</span> <span class="fl">0.001</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Why Prune? ✂️</strong></p>
+</div>
+<div class="callout-content">
+<p>Complex trees overfit! They memorize training data instead of learning patterns. Pruning simplifies the tree for better predictions on new data.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="complexity-parameter-table" class="slide level2 smaller">
+<h2>📊 Complexity Parameter Table</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Check complexity parameter table</span></span>
+<span id="cb54-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(complex_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression tree:
+rpart(formula = Survived ~ ., data = titanic_data, control = rpart.control(cp = 0.001))
+
+Variables actually used in tree construction:
+[1] Age    Fare   Parch  Pclass Sex    SibSp 
+
+Root node error: 172.21/714 = 0.24119
+
+n= 714 
+
+          CP nsplit rel error  xerror     xstd
+1  0.2903330      0   1.00000 1.00381 0.014390
+2  0.0840402      1   0.70967 0.71630 0.036251
+3  0.0313244      2   0.62563 0.63249 0.034684
+4  0.0312081      3   0.59430 0.62233 0.036795
+5  0.0258079      4   0.56309 0.60106 0.035731
+6  0.0188184      5   0.53729 0.57575 0.035023
+7  0.0100592      6   0.51847 0.56835 0.035852
+8  0.0091852      7   0.50841 0.59063 0.037991
+9  0.0050748      8   0.49922 0.58935 0.038489
+10 0.0045859      9   0.49415 0.60431 0.040519
+11 0.0036451     12   0.48039 0.60735 0.040685
+12 0.0036031     14   0.47310 0.61232 0.041128
+13 0.0033473     15   0.46950 0.60815 0.040947
+14 0.0031767     16   0.46615 0.61290 0.041194
+15 0.0031714     19   0.45662 0.61534 0.041297
+16 0.0019214     21   0.45028 0.63569 0.042087
+17 0.0018208     22   0.44836 0.64989 0.042658
+18 0.0016741     25   0.44289 0.65177 0.042604
+19 0.0014932     29   0.43620 0.65776 0.042596
+20 0.0014089     33   0.43022 0.65816 0.042659
+21 0.0012815     34   0.42881 0.65936 0.042737
+22 0.0011936     36   0.42624 0.65924 0.042578
+23 0.0011614     37   0.42505 0.65952 0.042608
+24 0.0011086     38   0.42389 0.66066 0.042660
+25 0.0010000     39   0.42278 0.66066 0.042660</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-cp-table" class="slide level2 smaller">
+<h2>📊 Understanding CP Table</h2>
+<p><strong>Choosing the right CP:</strong></p>
+<ul>
+<li>Look for the CP with lowest <code>xerror</code> (cross-validation error)</li>
+<li>Or use the “1-SE rule” for simpler trees</li>
+<li><code>nsplit</code>: Number of splits in the tree</li>
+<li><code>rel error</code>: Relative error on training data</li>
+<li><code>xerror</code>: Cross-validated error</li>
+<li><code>xstd</code>: Standard deviation of xerror</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Cross-Validation Matters! 🔄</strong></p>
+</div>
+<div class="callout-content">
+<p>The <code>xerror</code> is more reliable than training error because it tests on data the tree hasn’t seen. Always trust xerror over rel error!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-pruning" class="slide level2 smaller">
+<h2>✂️ Applying Pruning</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Find optimal CP</span></span>
+<span id="cb56-2"><a href="" aria-hidden="true" tabindex="-1"></a>optimal_cp <span class="ot">&lt;-</span> complex_tree<span class="sc">$</span>cptable[<span class="fu">which.min</span>(complex_tree<span class="sc">$</span>cptable[,<span class="st">"xerror"</span>]),<span class="st">"CP"</span>]</span>
+<span id="cb56-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Prune the tree</span></span>
+<span id="cb56-5"><a href="" aria-hidden="true" tabindex="-1"></a>pruned_tree <span class="ot">&lt;-</span> <span class="fu">prune</span>(complex_tree, <span class="at">cp =</span> optimal_cp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="before-pruning" class="slide level2 smaller">
+<h2>✂️ Before Pruning</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(complex_tree, <span class="at">main =</span> <span class="st">"Before Pruning"</span>, <span class="at">box.palette =</span> <span class="st">"Reds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/pruning-before-1.png" width="960" class="r-stretch"></section>
+<section id="after-pruning" class="slide level2 smaller">
+<h2>✂️ After Pruning</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(pruned_tree, <span class="at">main =</span> <span class="st">"After Pruning"</span>, <span class="at">box.palette =</span> <span class="st">"Greens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/pruning-after-1.png" width="960" class="r-stretch"><p><strong>Result:</strong> Simpler tree with better generalization! 🎯</p>
+</section>
+<section id="fun-example-game-character-selection" class="slide level2 smaller">
+<h2>🎮 Fun Example: Game Character Selection</h2>
+<p><strong>Let’s build something fun!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create game character data</span></span>
+<span id="cb59-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb59-3"><a href="" aria-hidden="true" tabindex="-1"></a>game_chars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb59-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">strength =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb59-5"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">magic =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb59-6"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">speed =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb59-7"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Warrior"</span>, <span class="st">"Mage"</span>, <span class="st">"Rogue"</span>, <span class="st">"Paladin"</span>), </span>
+<span id="cb59-8"><a href="" aria-hidden="true" tabindex="-1"></a>                 <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb59-9"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb59-10"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Build classifier</span></span>
+<span id="cb59-12"><a href="" aria-hidden="true" tabindex="-1"></a>game_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(class <span class="sc">~</span> strength <span class="sc">+</span> magic <span class="sc">+</span> speed,</span>
+<span id="cb59-13"><a href="" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> game_chars, <span class="at">method =</span> <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="game-character-tree" class="slide level2 smaller">
+<h2>🎮 Game Character Tree</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb60-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(game_model,</span>
+<span id="cb60-3"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"🎮 Game Character Class Predictor"</span>,</span>
+<span id="cb60-4"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"RdPu"</span>,</span>
+<span id="cb60-5"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">extra =</span> <span class="dv">104</span>,</span>
+<span id="cb60-6"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">fallen.leaves =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/game-plot-1.png" width="960" class="r-stretch"></section>
+<section id="understanding-split-quality" class="slide level2 smaller">
+<h2>🔬 Understanding Split Quality</h2>
+<p><strong>How does the algorithm choose splits?</strong></p>
+<p><strong>Gini Index:</strong></p>
+<ul>
+<li>Formula: <span class="math inline">\(Gini = 1 - \sum_{i=1}^{n} p_i^2\)</span></li>
+<li>Perfect split: Gini = 0 (all same class)</li>
+<li>Worst split: Gini = 0.5 (50/50 mix)</li>
+<li>Goal: Minimize Gini after split</li>
+</ul>
+<p><strong>Information Gain:</strong></p>
+<ul>
+<li>Formula: <span class="math inline">\(IG = Entropy(parent) - \sum \frac{|child|}{|parent|} \times Entropy(child)\)</span></li>
+<li>Entropy: <span class="math inline">\(H = -\sum_{i=1}^{n} p_i \log_2(p_i)\)</span></li>
+<li>Pure node: Entropy = 0</li>
+<li>Goal: Maximize information gain</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Gini vs Information Gain 🤔</strong></p>
+</div>
+<div class="callout-content">
+<p>Both methods usually produce similar trees! Gini is slightly faster to compute, while Information Gain has a theoretical foundation in information theory. <code>rpart</code> uses Gini by default.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-split-methods" class="slide level2 smaller">
+<h2>🔬 Comparing Split Methods</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Different splitting criteria</span></span>
+<span id="cb61-2"><a href="" aria-hidden="true" tabindex="-1"></a>model_gini <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> Sex <span class="sc">+</span> Pclass, <span class="at">data =</span> titanic_data,</span>
+<span id="cb61-3"><a href="" aria-hidden="true" tabindex="-1"></a>                    <span class="at">parms =</span> <span class="fu">list</span>(<span class="at">split =</span> <span class="st">"gini"</span>))</span>
+<span id="cb61-4"><a href="" aria-hidden="true" tabindex="-1"></a>model_info <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> Sex <span class="sc">+</span> Pclass, <span class="at">data =</span> titanic_data,</span>
+<span id="cb61-5"><a href="" aria-hidden="true" tabindex="-1"></a>                    <span class="at">parms =</span> <span class="fu">list</span>(<span class="at">split =</span> <span class="st">"information"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gini-index-split" class="slide level2 smaller">
+<h2>🔬 Gini Index Split</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(model_gini, <span class="at">main =</span> <span class="st">"Gini Index"</span>, <span class="at">box.palette =</span> <span class="st">"Blues"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/split-gini-1.png" width="960" class="r-stretch"></section>
+<section id="information-gain-split" class="slide level2 smaller">
+<h2>🔬 Information Gain Split</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(model_info, <span class="at">main =</span> <span class="st">"Information Gain"</span>, <span class="at">box.palette =</span> <span class="st">"Greens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/split-info-1.png" width="960" class="r-stretch"></section>
+<section id="best-practices-tips" class="slide level2 smaller">
+<h2>🎯 Best Practices &amp; Tips</h2>
+<p><strong>Key recommendations for building decision trees:</strong></p>
+<ul>
+<li>✅ <strong>Start simple</strong> - Use default parameters first</li>
+<li>✅ <strong>Check class balance</strong> - Adjust priors if needed</li>
+<li>✅ <strong>Cross-validate</strong> - Don’t trust training accuracy alone</li>
+<li>✅ <strong>Prune wisely</strong> - Simpler trees generalize better</li>
+<li>✅ <strong>Interpret carefully</strong> - Correlation ≠ Causation</li>
+<li>✅ <strong>Feature engineering</strong> - Good features = better trees</li>
+<li>✅ <strong>Ensemble methods</strong> - Consider Random Forests</li>
+<li>✅ <strong>Visualize always</strong> - Trees are meant to be seen!</li>
+</ul>
+<p><strong>Common Pitfall:</strong> 🚨 Don’t overfit! A tree that’s 100% accurate on training data is probably memorizing!</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Golden Rule ⚖️</strong></p>
+</div>
+<div class="callout-content">
+<p>If your training accuracy is much higher than test accuracy, you’re overfitting! Increase <code>cp</code>, <code>minsplit</code>, or try pruning.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="live-coding-challenge" class="slide level2 smaller">
+<h2>🧪 Live Coding Challenge!</h2>
+<p><strong>Let’s build a tree together in real-time!</strong> 🚀</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR TURN: Complete this code</span></span>
+<span id="cb64-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict whether a passenger is in 1st class based on fare and age</span></span>
+<span id="cb64-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create the target variable</span></span>
+<span id="cb64-5"><a href="" aria-hidden="true" tabindex="-1"></a>titanic_data<span class="sc">$</span>FirstClass <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(titanic_data<span class="sc">$</span>Pclass <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
+<span id="cb64-6"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Build your model (fill in the blanks!)</span></span>
+<span id="cb64-8"><a href="" aria-hidden="true" tabindex="-1"></a>class_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(</span>
+<span id="cb64-9"><a href="" aria-hidden="true" tabindex="-1"></a>  FirstClass <span class="sc">~</span> _____ <span class="sc">+</span> _____,  <span class="co"># Add predictors</span></span>
+<span id="cb64-10"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> titanic_data,</span>
+<span id="cb64-11"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"_____"</span>  <span class="co"># classification or regression?</span></span>
+<span id="cb64-12"><a href="" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb64-13"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-14"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Visualize</span></span>
+<span id="cb64-15"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(class_model, </span>
+<span id="cb64-16"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">"Your Tree Title Here!"</span>,</span>
+<span id="cb64-17"><a href="" aria-hidden="true" tabindex="-1"></a>           <span class="at">box.palette =</span> <span class="st">"_____"</span>)  <span class="co"># Choose a color!</span></span>
+<span id="cb64-18"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-19"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Make a prediction</span></span>
+<span id="cb64-20"><a href="" aria-hidden="true" tabindex="-1"></a>new_passenger <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Fare =</span> <span class="dv">50</span>, <span class="at">Age =</span> <span class="dv">30</span>)</span>
+<span id="cb64-21"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(class_model, new_passenger, <span class="at">type =</span> <span class="st">"_____"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Challenge:</strong> Can you get accuracy above 85%? 🎯</p>
+</div>
+</div>
+</div>
+</section>
+<section id="interactive-quiz-test-your-knowledge" class="slide level2 smaller">
+<h2>🎮 Interactive Quiz: Test Your Knowledge!</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Question 1</a></li><li><a href="#tabset-2-2">Question 2</a></li><li><a href="#tabset-2-3">Question 3</a></li><li><a href="#tabset-2-4">Question 4</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p><strong>What does a decision tree use to decide splits?</strong></p>
+<ol type="A">
+<li>Random selection<br>
+</li>
+<li>Alphabetical order<br>
+</li>
+<li>Gini Index or Information Gain ✅<br>
+</li>
+<li>User preference</li>
+</ol>
+</div>
+<div id="tabset-2-2">
+<p><strong>What does “pruning” do?</strong></p>
+<ol type="A">
+<li>Makes the tree grow faster<br>
+</li>
+<li>Removes branches to prevent overfitting ✅<br>
+</li>
+<li>Adds more features<br>
+</li>
+<li>Changes the root node</li>
+</ol>
+</div>
+<div id="tabset-2-3">
+<p><strong>Which is NOT a good use case for decision trees?</strong></p>
+<ol type="A">
+<li>Medical diagnosis<br>
+</li>
+<li>Credit approval<br>
+</li>
+<li>Complex mathematical optimization ✅<br>
+</li>
+<li>Species classification</li>
+</ol>
+</div>
+<div id="tabset-2-4">
+<p><strong>What does <code>cp</code> parameter control?</strong></p>
+<ol type="A">
+<li>Tree color<br>
+</li>
+<li>Computation speed<br>
+</li>
+<li>Complexity/pruning ✅<br>
+</li>
+<li>Number of leaves</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="common-mistakes-to-avoid" class="slide level2 smaller">
+<h2>💡 Common Mistakes to Avoid</h2>
+<p><strong>Learn from these pitfalls:</strong></p>
+<ol type="1">
+<li><strong>❌ Not pruning overgrown trees</strong>
+<ul>
+<li>✅ Use <code>cp</code> parameter or <code>prune()</code> function</li>
+</ul></li>
+<li><strong>❌ Ignoring class imbalance</strong>
+<ul>
+<li>✅ Adjust priors: <code>parms = list(prior = c(0.7, 0.3))</code></li>
+</ul></li>
+<li><strong>❌ Testing on training data</strong>
+<ul>
+<li>✅ Always use separate test set or cross-validation</li>
+</ul></li>
+<li><strong>❌ Forgetting to handle missing data</strong>
+<ul>
+<li>✅ Use <code>na.action = na.omit</code> or impute values</li>
+</ul></li>
+<li><strong>❌ Using too many features without checking</strong>
+<ul>
+<li>✅ Check <code>variable.importance</code> first</li>
+</ul></li>
+</ol>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Prevention is Better Than Debugging! 🐛</strong></p>
+</div>
+<div class="callout-content">
+<p>These mistakes can waste hours of debugging time. Learn them now and save yourself future frustration!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="customization-gallery" class="slide level2 smaller">
+<h2>🎨 Customization Gallery</h2>
+<p><strong>Different ways to style your trees:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple model for demo</span></span>
+<span id="cb65-2"><a href="" aria-hidden="true" tabindex="-1"></a>simple_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> Sex <span class="sc">+</span> Pclass, <span class="at">data =</span> titanic_data, <span class="at">method =</span> <span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Make It Your Own! 🎨</strong></p>
+</div>
+<div class="callout-content">
+<p>The next few slides show different color schemes and styles. Choose what works best for your audience and presentation context!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="classic-gray-style" class="slide level2 smaller">
+<h2>🎨 Classic Gray Style</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(simple_model, <span class="at">box.palette =</span> <span class="st">"Grays"</span>, <span class="at">main =</span> <span class="st">"Classic Gray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/style1-1.png" width="960" class="r-stretch"></section>
+<section id="traffic-light-style" class="slide level2 smaller">
+<h2>🎨 Traffic Light Style</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(simple_model, <span class="at">box.palette =</span> <span class="st">"RdYlGn"</span>, <span class="at">main =</span> <span class="st">"Traffic Light"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/style2-1.png" width="960" class="r-stretch"></section>
+<section id="minimal-blue-style" class="slide level2 smaller">
+<h2>🎨 Minimal Blue Style</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(simple_model, <span class="at">box.palette =</span> <span class="st">"Blues"</span>, <span class="at">type =</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Minimal Blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/style3-1.png" width="960" class="r-stretch"></section>
+<section id="detailed-orange-style" class="slide level2 smaller">
+<h2>🎨 Detailed Orange Style</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(simple_model, <span class="at">box.palette =</span> <span class="st">"Oranges"</span>, <span class="at">extra =</span> <span class="dv">104</span>, <span class="at">main =</span> <span class="st">"Detailed Orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/style4-1.png" width="960" class="r-stretch"></section>
+<section id="debugging-your-trees" class="slide level2 smaller">
+<h2>🔍 Debugging Your Trees</h2>
+<p><strong>Tree not working as expected? Check these:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic commands</span></span>
+<span id="cb70-2"><a href="" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> ., <span class="at">data =</span> titanic_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Diagnostic Toolkit 🔧</strong></p>
+</div>
+<div class="callout-content">
+<p>We’ll explore several diagnostic tools on the next slides to help you understand and troubleshoot your decision trees.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="model-structure" class="slide level2 smaller">
+<h2>🔍 Model Structure</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Check tree structure</span></span>
+<span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>n= 714 
+
+node), split, n, deviance, yval
+      * denotes terminal node
+
+ 1) root 714 172.2129000 0.4061625  
+   2) Sex=male 453  73.9072800 0.2052980  
+     4) Age&gt;=6.5 429  63.1794900 0.1794872  
+       8) Pclass&gt;=1.5 330  34.3909100 0.1181818 *
+       9) Pclass&lt; 1.5 99  23.4141400 0.3838384  
+        18) Age&gt;=53 22   2.5909090 0.1363636 *
+        19) Age&lt; 53 77  19.0909100 0.4545455 *
+     5) Age&lt; 6.5 24   5.3333330 0.6666667  
+      10) SibSp&gt;=2.5 9   0.8888889 0.1111111 *
+      11) SibSp&lt; 2.5 15   0.0000000 1.0000000 *
+   3) Sex=female 261  48.3065100 0.7547893  
+     6) Pclass&gt;=2.5 102  25.3431400 0.4607843  
+      12) Fare&gt;=20.8 23   2.6086960 0.1304348 *
+      13) Fare&lt; 20.8 79  19.4936700 0.5569620 *
+     7) Pclass&lt; 2.5 159   8.4905660 0.9433962 *</code></pre>
+</div>
+</div>
+</section>
+<section id="more-debugging-tools" class="slide level2 smaller">
+<h2>🔍 More Debugging Tools</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. View variable importance</span></span>
+<span id="cb73-2"><a href="" aria-hidden="true" tabindex="-1"></a>model<span class="sc">$</span>variable.importance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Sex    Pclass      Fare       Age     Parch     SibSp 
+49.999087 21.822555 19.158345 11.102152  7.231022  6.848682 </code></pre>
+</div>
+</div>
+</section>
+<section id="cp-table-analysis" class="slide level2 smaller">
+<h2>🔍 CP Table Analysis</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Check complexity parameter table</span></span>
+<span id="cb75-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression tree:
+rpart(formula = Survived ~ ., data = titanic_data)
+
+Variables actually used in tree construction:
+[1] Age    Fare   Pclass Sex    SibSp 
+
+Root node error: 172.21/714 = 0.24119
+
+n= 714 
+
+        CP nsplit rel error  xerror     xstd
+1 0.290333      0   1.00000 1.00308 0.014375
+2 0.084040      1   0.70967 0.71252 0.036093
+3 0.031324      2   0.62563 0.63038 0.034589
+4 0.031208      3   0.59430 0.61596 0.036063
+5 0.025808      4   0.56309 0.58188 0.034830
+6 0.018818      5   0.53729 0.56775 0.034777
+7 0.010059      6   0.51847 0.56373 0.035456
+8 0.010000      7   0.50841 0.56414 0.036219</code></pre>
+</div>
+</div>
+</section>
+<section id="visualize-cross-validation-error" class="slide level2 smaller">
+<h2>🔍 Visualize Cross-Validation Error</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Plot cross-validation error</span></span>
+<span id="cb77-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="decision_trees_slides_files/figure-revealjs/debugging3-1.png" width="960" class="r-stretch"><p><strong>Debugging Tip:</strong> 🔧 If your tree is just one node, try lowering <code>cp</code> or <code>minsplit</code>!</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Reading the CP Plot 📉</strong></p>
+</div>
+<div class="callout-content">
+<p>Look for the horizontal dashed line (min + 1 SE). Choose the simplest tree (leftmost point) below this line for best generalization!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="text-align: center; font-size: 2em; color: #2E86AB;">
+<p><strong>Now Go Forth and Build Intelligent Trees! 🌳✨</strong></p>
+</div>
+<center>
+<img data-src="sql_proj/graphics/style.png">
+</center>
+</section>
+<section id="bonus-complete-example-code" class="slide level2 smaller">
+<h2>🎁 Bonus: Complete Example Code</h2>
+<p><strong>Copy-paste ready code for your projects!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb78-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># COMPLETE DECISION TREE WORKFLOW</span></span>
+<span id="cb78-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb78-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load libraries</span></span>
+<span id="cb78-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb78-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb78-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb78-9"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Load and prepare data</span></span>
+<span id="cb78-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(titanic_train, <span class="at">package =</span> <span class="st">"titanic"</span>)</span>
+<span id="cb78-12"><a href="" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> titanic_train <span class="sc">%&gt;%</span> <span class="fu">select</span>(Survived, Pclass, Sex, Age, Fare) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb78-13"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-14"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Split train/test</span></span>
+<span id="cb78-15"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb78-16"><a href="" aria-hidden="true" tabindex="-1"></a>train_idx <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df), <span class="fl">0.7</span> <span class="sc">*</span> <span class="fu">nrow</span>(df))</span>
+<span id="cb78-17"><a href="" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> df[train_idx, ]</span>
+<span id="cb78-18"><a href="" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> df[<span class="sc">-</span>train_idx, ]</span>
+<span id="cb78-19"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-20"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build model</span></span>
+<span id="cb78-21"><a href="" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Survived <span class="sc">~</span> ., <span class="at">data =</span> train, <span class="at">method =</span> <span class="st">"class"</span>,</span>
+<span id="cb78-22"><a href="" aria-hidden="true" tabindex="-1"></a>               <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">cp =</span> <span class="fl">0.01</span>))</span>
+<span id="cb78-23"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-24"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Visualize</span></span>
+<span id="cb78-25"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(model, <span class="at">main =</span> <span class="st">"Titanic Survival Tree"</span>, <span class="at">box.palette =</span> <span class="st">"RdYlGn"</span>)</span>
+<span id="cb78-26"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-27"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Evaluate</span></span>
+<span id="cb78-28"><a href="" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test, <span class="at">type =</span> <span class="st">"class"</span>)</span>
+<span id="cb78-29"><a href="" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">mean</span>(pred <span class="sc">==</span> test<span class="sc">$</span>Survived)</span>
+<span id="cb78-30"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Test Accuracy:"</span>, <span class="fu">round</span>(accuracy <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb78-31"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-32"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Prune if needed</span></span>
+<span id="cb78-33"><a href="" aria-hidden="true" tabindex="-1"></a>pruned <span class="ot">&lt;-</span> <span class="fu">prune</span>(model, <span class="at">cp =</span> <span class="fl">0.02</span>)</span>
+<span id="cb78-34"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(pruned, <span class="at">main =</span> <span class="st">"Pruned Tree"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="decision_trees_slides_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="decision_trees_slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 800,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
