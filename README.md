@@ -389,8 +389,8 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 10 | 31 Oct | [Lab06](https://classroom.github.com/a/ri4ipUWr) MultiLinear Regression (multicollinearity, model summaries, etc), |
 | 11 | 5 Nov  | Discussion of The Vaccine Lab, [Lab07 Group Project (create or choose group's name from list)](https://classroom.github.com/a/kvpQkosF), Databases in R: [Activity 05](https://classroom.github.com/a/HO8of7fY)  |
 | 12 | 12 Nov | Intro to Decision Trees, [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7) |
-| 13 | TBA | Announcement of Final Project, Decision Trees and Random Forests (see supplied tutorials for ideas|
-| 13 | TBA | Scikit-Learn tutorials for ideas, |
+| 13 | 20 Nov | Announcement of Final Project [Final-Project](https://classroom.github.com/a/iecZ5xuK) , Decision Trees and Random Forests (see supplied tutorials for ideas|
+| 13 | TBA | TBA |
 | 13 | TBA | Presentations for activity 10|
 | 14 | TBA | TBA|
 | 16 | TBA | TBA, Course evaluations|
