@@ -390,10 +390,8 @@ Below is a __tentative__ schedule of covered topics and activities.
 | 11 | 5 Nov  | Discussion of The Vaccine Lab, [Lab07 Group Project (create or choose group's name from list)](https://classroom.github.com/a/kvpQkosF), Databases in R: [Activity 05](https://classroom.github.com/a/HO8of7fY)  |
 | 12 | 12 Nov | Intro to Decision Trees, [Speaker Form](https://forms.gle/bcFwEHVuiym7hUqV7) |
 | 13 | 20 Nov | Announcement of Final Project [Final-Project](https://classroom.github.com/a/iecZ5xuK) , Decision Trees and Random Forests (see supplied tutorials for ideas|
-| 13 | TBA | Presentations for Lab 07|
-| 14 | 1 Dec| Neural Networks (Last topic!) |
-| 16 | TBA | TBA, Course evaluations|
-| 16 | TBA | The Great Review|
+| 14 | 26 November| Presentations for Lab 07|
+| 15 | 1 Dec| Neural Networks (Last topic!) |
+| 15 | 4 Dec | the Great Review, Course evaluations|
 
 (Check back periodically to find updates to our schedule.)
-
